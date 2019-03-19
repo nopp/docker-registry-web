@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if catalogs is mapping %}
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+        {% for catalog,tags in catalogs.items() %}
+            {% set totalImages = tags|length %}
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h6 class="my-0 font-weight-normal"><i class="fab fa-docker"></i> {{catalog}}</h6>
+                </div>
+                <div class="card-body">
+                    {% if totalImages > 1 %}
+                        {{totalImages}} images
+                    {% else %}
+                        {{totalImages}} image
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% else %}
+        {{ catalogs }}
+    {% endif %}
+{% endblock %}
