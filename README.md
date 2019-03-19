@@ -1,4 +1,6 @@
-# docker-registry-web
+# Docker registry web
+  Simple docker registry viewer
+  
   Under development ;)
 
 Screenshot v0.1
