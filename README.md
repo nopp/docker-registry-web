@@ -18,7 +18,7 @@ Running with local Docker
 
 To access: http://localhost:8083
 
-Runnning from hub.docker.com image
+Running from hub.docker.com image
 ==================================
 1) docker run -d -e title='titleOfthisApp' -e registryurl="http://registry.url.com" -p 8083:8083 nopp/registry-ui:0.1
 
