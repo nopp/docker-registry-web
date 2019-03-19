@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 
-url = "http://registry.preventsenior.com.br"
+url = "http://registry.lalala.com"
 
 def bytes_to(bytes,to,bsize=1024):
     try:
