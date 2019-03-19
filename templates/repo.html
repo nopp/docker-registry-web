@@ -1,10 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
+    <h3 class="my-0 font-weight-normal"><i class="fab fa-docker"></i> {{repo}}</h3>
+    <br>
     <table class="table">
         <thead>
             <tr>
             <th scope="col">Version</th>
+            <th scope="col">Creation date</th>
             <th scope="col">Architecture</th>
+            <th scope="col">OS</th>
             <th scope="col">Size</th>
             </tr>
         </thead>
@@ -13,7 +17,9 @@
             {% set imageInfo = drweb.infoTag(repo,tag) %}
             <tr>
                 <td>{{ tag }}</td>
+                <td>{{ imageInfo[repo]["created"].strftime('%d/%m/%Y %H:%M:%S') }}</td>
                 <td>{{ imageInfo[repo]["architecture"] }}</td>
+                <td>{{ imageInfo[repo]["os"] }}</td>
                 <td>{{ imageInfo[repo]["totalSize"] }} MB</td>
             </tr>
         {% endfor %}

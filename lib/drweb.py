@@ -1,3 +1,5 @@
+from datetime import datetime
+import dateutil.parser as dp
 from flask import jsonify
 import urllib.request
 import requests
@@ -53,6 +55,9 @@ class Drweb:
             info["name"] = repo
             info["architecture"] = infoTag['architecture']
             info["history"] = infoTag['history']
+            moreInfo = json.loads(info["history"][0]["v1Compatibility"])
+            info["os"] = moreInfo["os"]
+            info["created"] = dp.parse(moreInfo["created"])
             info["layers"] = requests.get(self.url+"/v2/"+repo+"/manifests/"+version,headers=headers).json()["layers"]
             info["totalSize"] = self.imageSize(info["layers"])
             tag[repo] = info

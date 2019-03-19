@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 from flask import Flask,render_template
+from datetime import datetime
 from lib.drweb import *
 
 app = Flask(__name__)
 
 drweb = Drweb()
+
+@app.template_filter('dt')
+def datetimeformat(value):
+	return datetime.strptime(value, '%Y%m%d').strftime('%d/%m/%Y')
 
 @app.route("/repo/<repo>",methods=['GET'])
 def repo(repo):
