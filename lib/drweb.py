@@ -1,13 +1,12 @@
 from datetime import datetime
 import dateutil.parser as dp
 from flask import jsonify
-import urllib.request
 import requests
 import json
 
 class Drweb:
 
-    url = "http://registry.lalala.com"
+    appConfig = json.load(open("/home/pia/GoogleDrive/registryUi/config.json"))
 
     def bytes_to(self,bytes,to,bsize=1024):
         try:
@@ -22,7 +21,7 @@ class Drweb:
     def listCatalogs(self,url):
         try:
             listCatalogs = {}
-            catalogs = json.loads(urllib.request.urlopen(url+"/v2/_catalog").read())
+            catalogs = json.loads(requests.get(self.appConfig["registry_url"]+"/v2/_catalog").text)
             for catalog in catalogs['repositories']:
                 listCatalogs[catalog] = self.listTags(catalog)        
             return listCatalogs
@@ -32,7 +31,7 @@ class Drweb:
     def listTags(self,repo):
         try:
             tagsList = []
-            tags = json.loads(urllib.request.urlopen(self.url+"/v2/"+repo+"/tags/list").read())
+            tags = json.loads(requests.get(self.appConfig["registry_url"]+"/v2/"+repo+"/tags/list").text)
             for tag in tags['tags']:
                 tagsList.append(tag)
             return tagsList
@@ -51,14 +50,14 @@ class Drweb:
             tag = {}
             info = {}
             headers = {'accept': 'application/vnd.docker.distribution.manifest.v2+json'}   
-            infoTag = requests.get(self.url+"/v2/"+repo+"/manifests/"+version).json()
+            infoTag = requests.get(self.appConfig["registry_url"]+"/v2/"+repo+"/manifests/"+version).json()
             info["name"] = repo
             info["architecture"] = infoTag['architecture']
             info["history"] = infoTag['history']
             moreInfo = json.loads(info["history"][0]["v1Compatibility"])
             info["os"] = moreInfo["os"]
             info["created"] = dp.parse(moreInfo["created"])
-            info["layers"] = requests.get(self.url+"/v2/"+repo+"/manifests/"+version,headers=headers).json()["layers"]
+            info["layers"] = requests.get(self.appConfig["registry_url"]+"/v2/"+repo+"/manifests/"+version,headers=headers).json()["layers"]
             info["totalSize"] = self.imageSize(info["layers"])
             tag[repo] = info
             return tag
