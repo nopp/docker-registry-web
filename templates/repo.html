@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Architecture</th>
+            <th scope="col">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            {% set imageInfo = drweb.infoTag(repo,tag) %}
+            <tr>
+                <td>tag</td>
+                <td>{{ imageInfo["architecture"] }}</td>
+                <td>{{ imageInfo["size"] }}</td>
+            </tr>
+            {{ tag }}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

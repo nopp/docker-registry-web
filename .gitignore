@@ -1,3 +1,4 @@
 gosrc
 uo.json
 .vscode
+*.pyc
