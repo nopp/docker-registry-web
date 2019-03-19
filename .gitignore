@@ -1,5 +1,4 @@
 gosrc
-uo.json
+*.json
 .vscode
 *.pyc
-config.json
