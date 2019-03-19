@@ -7,7 +7,7 @@ Docker local
 ============
   docker build -t registry-ui .
   
-  docker run -d -e title='titleOfthisApp' -e registryurl="http://registry.url.com" -p 8083:8083 registry-ui:0.1
+  docker run -d -e title='titleOfthisApp' -e registryurl="http://registry.url.com" -p 8083:8083 registry-ui
 
   To access: http://localhost:8083
 
