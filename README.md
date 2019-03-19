@@ -1,5 +1,5 @@
-# Docker registry web
-  Simple docker registry viewer
+# Registry UI
+  Simple Docker registry v2 viewer
   
   Under development ;)
 
