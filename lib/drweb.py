@@ -6,7 +6,7 @@ import json
 
 class Drweb:
 
-    appConfig = json.load(open("/home/pia/GoogleDrive/registryUi/config.json"))
+    appConfig = json.load(open("/etc/registry-ui/config.json"))
 
     def bytes_to(self,bytes,to,bsize=1024):
         try:
