@@ -12,6 +12,8 @@ RUN apk update \
 
 WORKDIR /registry-ui
 
+RUN cat /etc/registry-ui/config.json
+
 COPY run.sh /registry-ui
 
 RUN chmod +x /registry-ui/run.sh
