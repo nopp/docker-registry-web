@@ -11,9 +11,13 @@
                 </div>
                 <div class="card-body">
                     {% if totalImages > 1 %}
-                        {{totalImages}} images
+                        <a href="repo/{{catalog}}">
+                            <h3><span class="badge badge-light">{{totalImages}} images</span></h3>
+                        </a>
                     {% else %}
-                        {{totalImages}} image
+                        <a href="repo/{{catalog}}">
+                            <h3><span class="badge badge-light">{{totalImages}} image</span></h3>
+                        </a>
                     {% endif %}
                 </div>
             </div>
