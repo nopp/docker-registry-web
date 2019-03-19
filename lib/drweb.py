@@ -56,6 +56,6 @@ class Drweb:
             info["layers"] = requests.get(self.url+"/v2/"+repo+"/manifests/"+version,headers=headers).json()["layers"]
             info["totalSize"] = self.imageSize(info["layers"])
             tag[repo] = info
-            return jsonify(tag)
+            return tag
         except Exception as e:
             return(str(e))

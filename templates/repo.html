@@ -12,11 +12,10 @@
         {% for tag in tags %}
             {% set imageInfo = drweb.infoTag(repo,tag) %}
             <tr>
-                <td>tag</td>
-                <td>{{ imageInfo["architecture"] }}</td>
-                <td>{{ imageInfo["size"] }}</td>
+                <td>{{ tag }}</td>
+                <td>{{ imageInfo[repo]["architecture"] }}</td>
+                <td>{{ imageInfo[repo]["totalSize"] }} MB</td>
             </tr>
-            {{ tag }}
         {% endfor %}
         </tbody>
     </table>
