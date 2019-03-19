@@ -12,7 +12,7 @@ RUN apk update \
 
 WORKDIR /registry-ui
 
-COPY run.sh /registry-ui/run.sh
+COPY docker/run.sh /registry-ui/run.sh
 
 RUN chmod +x /registry-ui/run.sh
 
