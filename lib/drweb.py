@@ -32,9 +32,12 @@ class Drweb:
         try:
             tagsList = []
             tags = json.loads(requests.get(self.appConfig["registry_url"]+"/v2/"+repo+"/tags/list").text)
-            for tag in tags['tags']:
-                tagsList.append(tag)
-            return tagsList
+            if tags['tags'] is not None:
+                for tag in tags['tags']:
+                    tagsList.append(tag)
+                return tagsList
+            else: # If catalog don't have tags :) ... a little "hammer"
+                return 0
         except Exception as e:
             return(str(e))
 
