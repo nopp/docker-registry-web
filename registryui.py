@@ -8,7 +8,8 @@ drweb = Drweb()
 
 @app.route("/repo/<repo>",methods=['GET'])
 def repo(repo):
-    return render_template('repo.html',tags=drweb.listTags(repo),repo=repo,drweb=drweb)
+    realName = repo.replace(".","/") # little hammer for repository with slashes ex: juca/loco -> juca.loco -> juca/loco
+    return render_template('repo.html',tags=drweb.listTags(realName),repo=realName,drweb=drweb)
 
 @app.route("/image/<repo>/<version>",methods=['GET'])
 def image(repo,version):
@@ -19,4 +20,4 @@ def index():
     return render_template('index.html',catalogs=drweb.listCatalogs(drweb.appConfig["registry_url"]),drweb=drweb)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8083)
+    app.run(host="0.0.0.0",port=8083, debug=True)

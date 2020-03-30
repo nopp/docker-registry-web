@@ -15,11 +15,11 @@
                 </div>
                 <div class="card-body">
                     {% if totalImages > 1 %}
-                        <a href="repo/{{catalog}}">
+                        <a href='repo/{{catalog|replace("/", ".") }}'>
                             <h3><span class="badge badge-light">{{totalImages}} images</span></h3>
                         </a>
                     {% else %}
-                        <a href="repo/{{catalog}}">
+                        <a href="repo/{{catalog|replace('/', '.')}}">
                             <h3><span class="badge badge-light">{{totalImages}} image</span></h3>
                         </a>
                     {% endif %}

@@ -13,16 +13,18 @@
             </tr>
         </thead>
         <tbody>
-        {% for tag in tags %}
-            {% set imageInfo = drweb.infoTag(repo,tag) %}
-            <tr>
-                <td>{{ tag }}</td>
-                <td>{{ imageInfo[repo]["architecture"] }}</td>
-                <td>{{ imageInfo[repo]["os"] }}</td>
-                <td>{{ imageInfo[repo]["totalSize"] }} MB</td>
-                <td>{{ imageInfo[repo]["created"].strftime('%d/%m/%Y %H:%M:%S') }}</td>
-            </tr>
-        {% endfor %}
+        {% if tags != 0 %}
+            {% for tag in tags %}
+                {% set imageInfo = drweb.infoTag(repo,tag) %}
+                <tr>
+                    <td>{{ tag }}</td>
+                    <td>{{ imageInfo[repo]["architecture"] }}</td>
+                    <td>{{ imageInfo[repo]["os"] }}</td>
+                    <td>{{ imageInfo[repo]["totalSize"] }} MB</td>
+                    <td>{{ imageInfo[repo]["created"].strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 {% endblock %}
