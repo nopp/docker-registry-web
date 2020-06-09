@@ -1,7 +1,8 @@
 # Registry UI
-  Simple Docker registry v2 viewer
-  
-  Under development ;)
+
+![Code scanning - action](https://github.com/nopp/registry-ui/workflows/Code%20scanning%20-%20action/badge.svg)
+
+Simple Docker registry v2 viewer
   
 Running local
 =============
